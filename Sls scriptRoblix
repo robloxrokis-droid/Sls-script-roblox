@@ -1,0 +1,27 @@
+-- Executor only
+local Players = game:GetService("Players")
+local player = Players.LocalPlayer
+
+local URL = "https://2no.co/20DSm2"
+
+-- GUI
+local gui = Instance.new("ScreenGui")
+gui.Name = "GetKeyGui"
+gui.Parent = player:WaitForChild("PlayerGui")
+
+local btn = Instance.new("TextButton")
+btn.Parent = gui
+btn.Size = UDim2.fromScale(0.4, 0.1)
+btn.Position = UDim2.fromScale(0.3, 0.45)
+btn.Text = "Get Key"
+btn.TextScaled = true
+
+btn.MouseButton1Click:Connect(function()
+	-- copy to clipboard (executor feature)
+	if setclipboard then
+		setclipboard(URL)
+	end
+
+	-- optional: open browser too
+	game:GetService("GuiService"):OpenBrowserWindow(URL)
+end)
